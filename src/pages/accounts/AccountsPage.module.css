@@ -1,0 +1,188 @@
+.container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+/* --- CARRUSEL AVANZADO --- */
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Los botones de navegación flotan a los lados */
+.navButton {
+  position: absolute;
+  z-index: 20;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.navButton:hover { background: #f0f0f0; transform: scale(1.1); }
+.navButton:disabled { opacity: 0; pointer-events: none; }
+
+.prevBtn { left: 20px; }
+.nextBtn { right: 20px; }
+
+/* La "Pista" que se mueve */
+.track {
+  display: flex;
+  gap: 40px;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- ESTILOS DE TARJETA --- */
+.card {
+  width: 340px; 
+  height: 200px;
+  border-radius: 20px;
+  padding: 25px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  /* Estado por defecto (Inactivo/Phantom) */
+  opacity: 0.5;
+  transform: scale(0.85);
+  transition: all 0.5s ease;
+  filter: blur(1px);
+
+  /* COLOR POR DEFECTO (USD / AZUL) */
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+/* VARIANTES POR MONEDA (Usando el atributo data-currency) */
+
+/* Soles (PEN) -> Rojo */
+.card[data-currency="PEN"] {
+  background: linear-gradient(135deg, #be123c, #881337);
+  box-shadow: 0 10px 25px rgba(190, 18, 60, 0.3);
+}
+
+/* Pesos (MXN) -> Verde */
+.card[data-currency="MXN"] {
+  background: linear-gradient(135deg, #059669, #065f46);
+  box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
+}
+
+/* --- ESTADO ACTIVO (La tarjeta del centro) --- */
+.cardActive {
+  opacity: 1;
+  transform: scale(1.1);
+  filter: blur(0);
+  z-index: 10;
+  
+  /* Sombra por defecto (Azul/USD) cuando está activa */
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.4);
+}
+
+/* Sombras Activas para las variantes */
+.cardActive[data-currency="PEN"] {
+  box-shadow: 0 25px 50px rgba(190, 18, 60, 0.5);
+}
+
+.cardActive[data-currency="MXN"] {
+  box-shadow: 0 25px 50px rgba(5, 150, 105, 0.5);
+}
+
+/* Contenido interno de la tarjeta */
+.cardLabel { font-size: 0.9rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+.cardNumber { font-size: 1.6rem; letter-spacing: 2px; font-family: monospace; text-align: center; }
+.cardType { align-self: flex-end; font-weight: bold; background: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 8px; font-size: 0.8rem; }
+
+/* --- DETALLES --- */
+.detailsSection {
+  margin-top: 1rem;
+  text-align: center;
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: opacity 0.3s;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1.1rem;
+}
+.detailLabel { color: #666; }
+.detailValue { font-weight: 600; color: #333; }
+.balanceValue { font-size: 1.5rem; color: #059669; font-weight: bold; margin-top: 10px; }
+
+/* --- BOTÓN FLOTANTE (FAB) --- */
+.fabContainer {
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 50;
+  cursor: pointer;
+}
+
+.fabLabel {
+  background-color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.fabContainer:hover .fabLabel {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.addButton {
+  width: 60px;
+  height: 60px;
+  background: #2563eb;
+  color: white;
+  border-radius: 50%;
+  font-size: 2rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+  transition: transform 0.2s;
+}
+
+.fabContainer:hover .addButton {
+  transform: rotate(90deg);
+  background: #1e40af;
+}
