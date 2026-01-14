@@ -1,0 +1,155 @@
+.container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* El contenedor principal dividido en dos */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 50% y 50% */
+  gap: 40px;
+  max-width: 1100px;
+  width: 90%;
+  margin: 40px auto;
+  align-items: start;
+}
+
+/* --- COLUMNA IZQUIERDA (FORMULARIO) --- */
+.formSection {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.formGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Inputs de solo lectura (Datos del usuario) */
+.readOnlyInput {
+  width: 100%;
+  padding: 12px;
+  background-color: #f3f4f6; /* Grisáceo para indicar que no se edita */
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #555;
+  font-weight: 600;
+  outline: none;
+  cursor: not-allowed;
+}
+
+/* Selects (Datos de la cuenta) */
+.selectInput {
+  width: 100%;
+  padding: 12px;
+  background-color: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+  cursor: pointer;
+}
+
+.selectInput:focus {
+  border-color: #2563eb;
+}
+
+/* --- COLUMNA DERECHA (PREVIEW) --- */
+.previewSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Sticky para que si el form es largo, la tarjeta te siga */
+  position: sticky; 
+  top: 100px; 
+}
+
+.previewTitle {
+  font-size: 1.1rem;
+  color: #888;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Reutilizamos estilos de tarjeta pero un poco más grandes para el preview */
+.cardPreview {
+  width: 400px;
+  height: 240px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  border-radius: 25px;
+  padding: 30px;
+  color: white;
+  box-shadow: 0 20px 50px rgba(37, 99, 235, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+/* Cambia color si es MXN o PEN para darle variedad visual */
+.cardPreview[data-currency="PEN"] {
+  background: linear-gradient(135deg, #be123c, #881337); /* Rojo Perú */
+  box-shadow: 0 20px 50px rgba(190, 18, 60, 0.3);
+}
+
+.cardPreview[data-currency="MXN"] {
+  background: linear-gradient(135deg, #059669, #065f46); /* Verde México */
+  box-shadow: 0 20px 50px rgba(5, 150, 105, 0.3);
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.cardLabel { font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; }
+.cardHolder { font-size: 1.2rem; font-weight: bold; margin-top: 5px; text-transform: uppercase;}
+.cardNumber { font-size: 1.5rem; letter-spacing: 4px; font-family: monospace; text-align: center; opacity: 0.6; } /* Opaco porque aún no existe */
+.cardFooter { display: flex; justify-content: space-between; align-items: center; }
+.cardType { background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 8px; font-weight: bold; font-size: 0.8rem; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contentGrid {
+    grid-template-columns: 1fr; /* Una columna en tablets/celulares */
+  }
+  .previewSection {
+    order: -1; /* Poner la tarjeta arriba en móvil */
+    position: static;
+    margin-bottom: 30px;
+  }
+}

@@ -1,0 +1,156 @@
+.header {
+  width: 100%;
+  height: 70px;
+  padding: 0 40px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Para que el dropdown flote sobre todo */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* --- IZQUIERDA: LOGO --- */
+.logoContainer {
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.logoCircle {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 0.8rem;
+}
+
+/* --- CENTRO: NAVEGACIÓN --- */
+.nav {
+  display: flex;
+  gap: 30px;
+  height: 100%; /* Para que los links ocupen toda la altura */
+}
+
+.navLink {
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: color 0.2s;
+  height: 100%;
+}
+
+.navLink:hover {
+  color: #2563eb;
+}
+
+/* El truco del subrayado cuando está activo */
+.activeLink {
+  color: #2563eb;
+}
+
+.activeLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0; /* Pegado al borde inferior del header */
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #2563eb;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+/* --- DERECHA: PERFIL Y DROPDOWN --- */
+.profileSection {
+  position: relative; /* Importante para posicionar el dropdown absoluto */
+}
+
+.profileIconBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.2s;
+  font-size: 1.2rem;
+}
+
+.profileIconBtn:hover {
+  background-color: #f9fafb;
+  color: #333;
+  border-color: #d1d5db;
+}
+
+/* EL MENÚ FLOTANTE */
+.dropdown {
+  position: absolute;
+  top: 50px; /* Un poco separado del botón */
+  right: 0;
+  width: 200px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdownItem {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #4b5563;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdownItem:hover {
+  background-color: #f3f4f6;
+  color: #2563eb;
+}
+
+.divider {
+  height: 1px;
+  background-color: #e5e7eb;
+  margin: 5px 0;
+}
+
+/* Responsive: Ocultar textos en móvil si es necesario */
+@media (max-width: 768px) {
+  .header { padding: 0 20px; }
+  .nav { display: none; } /* En móvil normalmente haríamos un menú hamburguesa */
+}

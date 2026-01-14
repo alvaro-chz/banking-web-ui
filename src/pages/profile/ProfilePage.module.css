@@ -1,0 +1,126 @@
+.container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Mitad y Mitad */
+  gap: 30px;
+  max-width: 1100px;
+  width: 90%;
+  margin: 30px auto;
+  align-items: start;
+}
+
+/* Tarjetas Generales */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+/* --- ESTILOS DE INPUTS --- */
+.formGroup {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 600;
+}
+
+/* Input bloqueado (Gris) */
+.inputReadOnly {
+  width: 100%;
+  padding: 10px;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #555;
+  outline: none;
+}
+
+/* Input Editable (Blanco con borde azul al foco) */
+.inputEditable {
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #2563eb;
+  border-radius: 8px;
+  color: #333;
+  outline: none;
+  transition: all 0.2s;
+}
+
+/* --- GRUPO DE EDICIÓN (Input + Botón) --- */
+.editGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Botón Lápiz / Check */
+.iconButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Estado: Lápiz (Azul claro) */
+.btnEdit {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+.btnEdit:hover { background-color: #dbeafe; }
+
+/* Estado: Guardar (Verde) */
+.btnSave {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+.btnSave:hover { background-color: #bbf7d0; }
+
+/* Botón Cancelar edición (Rojo, opcional) */
+.btnCancel {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+
+/* --- SECCIÓN PASSWORD --- */
+.passwordForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+}
