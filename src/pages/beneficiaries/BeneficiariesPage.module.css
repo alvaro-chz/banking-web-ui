@@ -1,0 +1,237 @@
+.container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr; /* La derecha un poco más ancha */
+  gap: 30px;
+  max-width: 1100px;
+  width: 90%;
+  margin: 30px auto;
+  align-items: start;
+}
+
+/* --- TARJETA DE LISTA (IZQUIERDA) --- */
+.listCard {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  overflow: hidden; /* Para que el borde redondeado corte el contenido */
+  display: flex;
+  flex-direction: column;
+  height: 500px; /* Altura fija para que tenga scroll si hay muchos */
+}
+
+.listHeader {
+  padding: 20px;
+  background-color: #f3f4f6;
+  font-weight: 700;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.listContent {
+  flex: 1;
+  overflow-y: auto; /* Scroll si hay muchos */
+}
+
+/* Item Individual */
+.beneficiaryItem {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.beneficiaryItem:hover {
+  background-color: #f9fafb;
+}
+
+.beneficiaryItem.active {
+  background-color: #eff6ff; /* Azul muy claro */
+  border-left: 4px solid #2563eb;
+}
+
+.avatarCircle {
+  width: 40px;
+  height: 40px;
+  background-color: #e5e7eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-weight: bold;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemAlias { font-weight: 600; color: #333; }
+.itemBank { font-size: 0.8rem; color: #666; }
+
+/* Botón flotante dentro de la lista (abajo) */
+.addButtonContainer {
+  padding: 15px;
+  border-top: 1px solid #e5e7eb;
+  background: white;
+}
+
+.addBtn {
+  width: 100%;
+  padding: 12px;
+  border: 2px dashed #cbd5e1;
+  background: transparent;
+  border-radius: 10px;
+  color: #64748b;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s;
+}
+
+.addBtn:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+/* --- TARJETA DE DETALLE (DERECHA) --- */
+.detailCard {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  min-height: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.emptyState {
+  flex: 1; /* Esto es la clave: le dice "ocupa todo el espacio disponible" */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centrado Vertical perfecto */
+  color: #9ca3af;
+  text-align: center;
+  min-height: 300px; /* Por seguridad */
+}
+
+.detailHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.detailTitle { font-size: 1.4rem; color: #1f2937; font-weight: 700; }
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+/* Estados del Input */
+.inputReadOnly {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+.inputEditable {
+  background-color: white;
+  border: 1px solid #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* Botones de acción (Lápiz, Basura, Check) */
+.actionGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.iconBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s;
+}
+
+.btnEdit { background: #eff6ff; color: #2563eb; }
+.btnEdit:hover { background: #dbeafe; }
+
+.btnSave { background: #dcfce7; color: #16a34a; }
+.btnSave:hover { background: #bbf7d0; }
+
+.btnCancel { background: #fee2e2; color: #ef4444; }
+.btnCancel:hover { background: #fca5a5; }
+
+.deleteContainer {
+  margin-top: 30px;          /* Espacio para separarlo de los inputs */
+  padding-top: 20px;         /* Espacio interno */
+  border-top: 1px solid #f0f0f0; /* Una línea sutil para separar zonas */
+  display: flex;
+  justify-content: flex-end; /* Alinea el botón a la DERECHA */
+}
+
+.btnDelete {
+  background: white;
+  border: 1px solid #fee2e2;
+  color: #ef4444;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  width: auto;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btnDelete:hover { background: #fee2e2; }
+
+/* Responsive */
+@media (max-width: 800px) {
+  .contentGrid { grid-template-columns: 1fr; }
+  .listCard { height: 300px; margin-bottom: 20px; }
+}
