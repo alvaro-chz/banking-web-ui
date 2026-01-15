@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
+import { Button } from '../../../components/Button';
+import { Footer } from '../../../components/Footer';
+import { Header } from '../../../components/Header';
+import { LoadingScreen } from '../../../components/LoadingScreen';
+import { useAuth } from '../../../context/AuthContext';
+import type { UserResponse } from '../../../services/user';
+import { changePassword, getUserProfile, updateUser } from '../../../services/user';
 import styles from './ProfilePage.module.css';
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
-import { LoadingScreen } from '../../components/LoadingScreen';
-import { Button } from '../../components/Button';
-import { useAuth } from '../../context/AuthContext';
-import { getUserProfile, updateUser, changePassword } from '../../services/user';
-import type { UserResponse } from '../../services/user';
 
 // Iconos (Si instalaste react-icons, si no, usa texto "Edit" / "Save")
-import { FiEdit2, FiCheck, FiX } from 'react-icons/fi'; 
+import { FiCheck, FiEdit2, FiX } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 
 export const ProfilePage = () => {

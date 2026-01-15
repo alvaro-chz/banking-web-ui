@@ -1,18 +1,17 @@
 import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom'; // Usamos NavLink
-import styles from './Header.module.css';
+import { NavLink, useNavigate } from 'react-router-dom';
+import styles from './Header.module.css'; // Reusamos el mismo CSS del cliente
 import { useAuth } from '../context/AuthContext';
 
 // Iconos
-import { FiSettings, FiUser, FiLogOut, FiActivity, FiCreditCard, FiUsers } from 'react-icons/fi';
+import { FiSettings, FiLogOut, FiPieChart, FiUsers, FiActivity } from 'react-icons/fi';
 
 interface HeaderProps {
-  // Ya no necesitamos title obligatorio, el título lo define la navegación
   title?: string; 
 }
 
-export const Header = ({ }: HeaderProps) => {
-  const { logout, user } = useAuth();
+export const HeaderAdmin = ({ }: HeaderProps) => {
+  const { logout } = useAuth();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -24,41 +23,40 @@ export const Header = ({ }: HeaderProps) => {
   return (
     <header className={styles.header}>
       
-      {/* IZQUIERDA: LOGO */}
-      <div className={styles.logoContainer} onClick={() => navigate('/accounts')}>
-        <div className={styles.logoCircle}>BK</div>
-        <span>BANK</span>
+      {/* IZQUIERDA: LOGO (Rojo o distintivo para Admin) */}
+      <div className={styles.logoContainer} onClick={() => navigate('/admin/dashboard')}>
+        {/* Cambiamos el color del borde a rojo para diferenciar Admin */}
+        <div className={styles.logoCircle} style={{borderColor: '#ef4444', color: '#ef4444'}}>AD</div>
+        <span style={{color: '#ef4444'}}>ADMIN</span>
       </div>
 
-      {/* CENTRO: NAVEGACIÓN */}
+      {/* CENTRO: NAVEGACIÓN ADMIN */}
       <nav className={styles.nav}>
-        {/* NavLink nos permite saber si está activo automáticamente */}
         <NavLink 
-          to="/accounts" 
+          to="/admin/dashboard" 
           className={({ isActive }) => isActive ? `${styles.navLink} ${styles.activeLink}` : styles.navLink}
         >
-          <FiCreditCard style={{marginRight: '8px'}}/> Cuentas
+          <FiPieChart style={{marginRight: '8px'}}/> Dashboard
         </NavLink>
 
         <NavLink 
-          to="/transactions" 
+          to="/admin/users" 
+          className={({ isActive }) => isActive ? `${styles.navLink} ${styles.activeLink}` : styles.navLink}
+        >
+          <FiUsers style={{marginRight: '8px'}}/> Usuarios
+        </NavLink>
+
+        <NavLink 
+          to="/admin/transactions" 
           className={({ isActive }) => isActive ? `${styles.navLink} ${styles.activeLink}` : styles.navLink}
         >
           <FiActivity style={{marginRight: '8px'}}/> Transacciones
         </NavLink>
-
-        <NavLink 
-          to="/beneficiaries" 
-          className={({ isActive }) => isActive ? `${styles.navLink} ${styles.activeLink}` : styles.navLink}
-        >
-         <FiUsers style={{marginRight: '8px'}}/> Beneficiarios
-        </NavLink>
       </nav>
 
-      {/* DERECHA: PERFIL (Engranaje) */}
+      {/* DERECHA: PERFIL */}
       <div className={styles.profileSection}>
         
-        {/* Botón Circular */}
         <button 
           className={styles.profileIconBtn} 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -67,19 +65,12 @@ export const Header = ({ }: HeaderProps) => {
           <FiSettings />
         </button>
 
-        {/* Menú Desplegable (Solo si isMenuOpen es true) */}
         {isMenuOpen && (
           <div className={styles.dropdown} onMouseLeave={() => setIsMenuOpen(false)}>
-            
-            {/* Cabecera del menú con nombre */}
             <div style={{padding: '10px 15px', color: '#9ca3af', fontSize: '0.8rem', fontWeight: 'bold'}}>
-              HOLA, {user?.name?.toUpperCase() || 'USUARIO'}
+              ADMINISTRADOR
             </div>
             
-            <NavLink to="/profile" className={styles.dropdownItem} onClick={() => setIsMenuOpen(false)}>
-              <FiUser /> Ver perfil
-            </NavLink>
-
             <div className={styles.divider}></div>
 
             <button className={styles.dropdownItem} onClick={handleLogout} style={{color: '#ef4444'}}>

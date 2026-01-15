@@ -9,6 +9,7 @@ interface User {
   token: string;
   name?: string; // Opcional, si quieres guardarlo para mostrarlo en el Header
   email?: string;
+  role: string;
 }
 
 // 2. Definimos qué funciones y datos tendrá nuestro Contexto
@@ -34,12 +35,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const storedToken = localStorage.getItem('token');
     const storedUserId = localStorage.getItem('userId');
     const storedName = localStorage.getItem('name');
+    const storedRole = localStorage.getItem('role');
     
-    if (storedToken && storedUserId) {
+    if (storedToken && storedUserId && storedRole) {
       setUser({
         id: Number(storedUserId),
         token: storedToken,
-        name: storedName ?? undefined
+        name: storedName ?? undefined,
+        role: storedRole
       });
     }
     setIsLoading(false);
@@ -51,6 +54,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     
     // Guardamos en LocalStorage
     localStorage.setItem('token', response.token);
+    localStorage.setItem('role', response.role)
     if (response.id) {
         localStorage.setItem('userId', response.id.toString());
     }
@@ -62,7 +66,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser({
       id: Number(response.id),
       token: response.token,
-      name: response.name
+      name: response.name,
+      role: response.role
     });
   };
 

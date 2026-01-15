@@ -3,21 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import styles from './NewTransactionPage.module.css';
 
 // Componentes
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
-import { Button } from '../../components/Button';
-import { LoadingScreen } from '../../components/LoadingScreen';
-import { Modal } from '../../components/Modal';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { Button } from '../../../components/Button';
+import { LoadingScreen } from '../../../components/LoadingScreen';
+import { Modal } from '../../../components/Modal';
 
 // Context y Servicios
-import { useAuth } from '../../context/AuthContext';
-import { getAccountsByUserId } from '../../services/account';
-import type { AccountResponse } from '../../services/account';
-import { getBeneficiaries } from '../../services/beneficiary';
-import type { BeneficiaryResponse } from '../../services/beneficiary';
-import { 
-  performTransfer, performDeposit, performWithdraw, performPayment 
-} from '../../services/transaction';
+import { useAuth } from '../../../context/AuthContext';
+import { getAccountsByUserId } from '../../../services/account';
+import type { AccountResponse } from '../../../services/account';
+import { getBeneficiaries } from '../../../services/beneficiary';
+import type { BeneficiaryResponse } from '../../../services/beneficiary';
+import { performTransfer, performDeposit, performWithdraw, performPayment } from '../../../services/transaction';
 
 // Iconos
 import { FiArrowUpRight, FiArrowDownLeft, FiCreditCard, FiDollarSign, FiUsers } from 'react-icons/fi';
