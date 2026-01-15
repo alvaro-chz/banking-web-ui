@@ -32,7 +32,7 @@
 /* --- IZQUIERDA: IMAGEN --- */
 .imageSide {
   width: 400px;
-  height: 580px; /* Ajustado para que coincida mejor con la altura de la tarjeta nueva */
+  height: 580px; 
   background-color: #e0e0e0;
   border-radius: 20px;
   display: flex;
@@ -47,7 +47,7 @@
 /* --- DERECHA: FORMULARIO (Estilo Register) --- */
 .loginCard {
   width: 100%;
-  max-width: 400px; /* Un poco más ancho para respirar mejor */
+  max-width: 400px; 
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -55,7 +55,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Sombra suave igual al register */
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
@@ -71,12 +70,12 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Aumentado de 12 a 15 para igualar Register */
+  gap: 15px; 
 }
 
 .input {
   width: 100%;
-  padding: 12px; /* Aumentado de 10 a 12 para igualar Register */
+  padding: 12px; 
   background: #fafafa;
   border: 1px solid var(--border-color);
   border-radius: 6px;
@@ -89,10 +88,9 @@
 }
 
 /* --- LINK DE REGISTRO --- */
-/* Esta es la clase que faltaba o estaba diferente */
 .signupRedirect {
   margin-top: 20px;
-  font-size: 14px; /* Ahora mide 14px igual que en Register */
+  font-size: 14px; 
   text-align: center;
 }
 
@@ -127,4 +125,34 @@
 @media (max-width: 850px) {
   .contentWrapper { flex-direction: column; gap: 20px; }
   .imageSide { display: none; }
+}
+
+/* =========================================
+   NUEVOS ESTILOS AÑADIDOS (Solo lógica de error)
+   ========================================= */
+
+/* Caja roja para el mensaje de error */
+.errorMessage {
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Animación suave al aparecer */
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Borde rojo para los inputs cuando fallan */
+.inputError {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
 }

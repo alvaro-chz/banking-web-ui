@@ -3,16 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import styles from './CreateAccountPage.module.css';
 
 // Componentes y Hooks
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
-import { LoadingScreen } from '../../components/LoadingScreen';
-import { useAuth } from '../../context/AuthContext';
-import { Button } from '../../components/Button';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { LoadingScreen } from '../../../components/LoadingScreen';
+import { useAuth } from '../../../context/AuthContext';
+import { Button } from '../../../components/Button';
 
 // Servicios
-import { getUserProfile } from '../../services/user';
-import type { UserResponse } from '../../services/user';
-import { createAccount } from '../../services/account';
+import { getUserProfile } from '../../../services/user';
+import type { UserResponse } from '../../../services/user';
+import { createAccount } from '../../../services/account';
 
 export const CreateAccountPage = () => {
   const navigate = useNavigate();

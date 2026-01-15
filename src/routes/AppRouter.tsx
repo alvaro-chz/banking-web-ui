@@ -1,13 +1,14 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { LoginPage } from '../pages/auth/LoginPage';
 import { RegisterPage } from '../pages/auth/RegisterPage';
-import { AccountsPage } from '../pages/accounts/AccountsPage';
+import { AccountsPage } from '../pages/client/accounts/AccountsPage';
 import { ProtectedRoute } from './ProtectedRoute';
-import { CreateAccountPage } from '../pages/accounts/CreateAccountPage';
-import { ProfilePage } from '../pages/profile/ProfilePage';
-import { BeneficiariesPage } from '../pages/beneficiaries/BeneficiariesPage';
-import { TransactionsPage } from '../pages/transactions/TransactionsPage';
-import { NewTransactionPage } from '../pages/transactions/NewTransactionPage';
+import { CreateAccountPage } from '../pages/client/accounts/CreateAccountPage';
+import { ProfilePage } from '../pages/client/profile/ProfilePage';
+import { BeneficiariesPage } from '../pages/client/beneficiaries/BeneficiariesPage';
+import { TransactionsPage } from '../pages/client/transactions/TransactionsPage';
+import { NewTransactionPage } from '../pages/client/transactions/NewTransactionPage';
+import { AdminDashboardPage } from '../pages/admin/dashboard/DashboardPage';
 
 export const AppRouter = () => {
   return (
@@ -17,7 +18,7 @@ export const AppRouter = () => {
       <Route path="/register" element={<RegisterPage />} />
       
       {/* Rutas Privadas (Protegidas) */}
-      <Route element={<ProtectedRoute />}>
+      <Route element={<ProtectedRoute allowedRoles={['CLIENT']} />}>
          {/* Todas las rutas que pongas aquí requerirán login automáticamente */}
          <Route path="/accounts" element={<AccountsPage />} />
          {/* <Route path="/transfers" element={<TransfersPage />} /> */}
@@ -26,6 +27,11 @@ export const AppRouter = () => {
          <Route path="/beneficiaries" element={<BeneficiariesPage />} />
          <Route path="/transactions" element={<TransactionsPage />} />
          <Route path="/transactions/new" element={<NewTransactionPage />} />
+      </Route>
+
+      <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
+         {/* Aquí pondremos las páginas del Admin */}
+         <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
       </Route>
 
       {/* Redirección por defecto */}

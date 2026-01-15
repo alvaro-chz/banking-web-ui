@@ -3,18 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import styles from './TransactionsPage.module.css';
 
 // Componentes
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
-import { LoadingScreen } from '../../components/LoadingScreen';
-import { Modal } from '../../components/Modal';
-import { Button } from '../../components/Button';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { LoadingScreen } from '../../../components/LoadingScreen';
+import { Modal } from '../../../components/Modal';
+import { Button } from '../../../components/Button';
 
 // Context y Servicios
-import { useAuth } from '../../context/AuthContext';
-import { getAccountsByUserId } from '../../services/account';
-import type { AccountResponse } from '../../services/account';
-import { getTransactionHistory } from '../../services/transaction';
-import type { TransactionResponse } from '../../services/transaction';
+import { useAuth } from '../../../context/AuthContext';
+import { getAccountsByUserId } from '../../../services/account';
+import type { AccountResponse } from '../../../services/account';
+import { getTransactionHistory } from '../../../services/transaction';
+import type { TransactionResponse } from '../../../services/transaction';
 
 // Iconos
 import { FiPlus, FiArrowUpRight, FiArrowDownLeft, FiRefreshCw, FiSearch, FiChevronLeft, FiChevronRight } from 'react-icons/fi';

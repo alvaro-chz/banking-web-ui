@@ -11,7 +11,8 @@ export interface AuthResponse {
   token: string;
   id: Number;
   name: string;
-  // Agrega aquí otros campos si tu backend devuelve más cosas (ej: nombre, rol)
+  email: string;
+  role: string;
 }
 
 export const loginService = async (credentials: LoginRequest): Promise<AuthResponse> => {

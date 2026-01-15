@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import styles from './AccountsPage.module.css';
-import { getAccountsByUserId } from '../../services/account';
-import type { AccountResponse } from '../../services/account';
-import { useAuth } from '../../context/AuthContext';
+import { getAccountsByUserId } from '../../../services/account';
+import type { AccountResponse } from '../../../services/account';
+import { useAuth } from '../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { Footer } from '../../components/Footer';
-import { Header } from '../../components/Header';
-import { LoadingScreen } from '../../components/LoadingScreen';
+import { Footer } from '../../../components/Footer';
+import { Header } from '../../../components/Header';
+import { LoadingScreen } from '../../../components/LoadingScreen';
 
 // Diccionarios para formatear datos según el código de moneda (USD, PEN, MXN)
 const currencyNames: Record<string, string> = {

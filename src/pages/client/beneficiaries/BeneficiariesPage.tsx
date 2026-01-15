@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
 import styles from './BeneficiariesPage.module.css';
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
-import { LoadingScreen } from '../../components/LoadingScreen';
-import { Button } from '../../components/Button';
-import { useAuth } from '../../context/AuthContext';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { LoadingScreen } from '../../../components/LoadingScreen';
+import { Button } from '../../../components/Button';
+import { useAuth } from '../../../context/AuthContext';
 import { 
-  getBeneficiaries, 
+  getBeneficiaries,
   addBeneficiary, 
   updateBeneficiary, 
   deleteBeneficiary, 
-} from '../../services/beneficiary';
+} from '../../../services/beneficiary';
 
 import type { 
-  BeneficiaryResponse, 
-  BeneficiaryRequest 
-} from '../../services/beneficiary';
+  BeneficiaryRequest, 
+  BeneficiaryResponse 
+} from '../../../services/beneficiary';
 
 // Iconos
 import { FiPlus, FiUser, FiEdit2, FiCheck, FiX, FiTrash2 } from 'react-icons/fi';
