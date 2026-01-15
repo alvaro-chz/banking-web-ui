@@ -1,0 +1,157 @@
+.container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  max-width: 1000px;
+  width: 90%;
+  margin: 30px auto;
+}
+
+/* --- BARRA DE FILTROS --- */
+.filterBar {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 150px;
+}
+
+.label { font-size: 0.85rem; color: #666; font-weight: 600; }
+
+.input, .select {
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: inherit;
+  outline: none;
+}
+
+.newTransactionBtn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px; /* Cuadrado redondeado */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  flex-shrink: 0; /* No se encoge */
+}
+.newTransactionBtn:hover { transform: scale(1.05); background-color: #1d4ed8; }
+
+/* --- LISTA DE TRANSACCIONES --- */
+.listContainer {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.transactionRow {
+  display: grid;
+  grid-template-columns: 50px 2fr 1fr 1fr 80px; /* Icono | Desc | Fecha | Monto | Estado */
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background 0.2s;
+  gap: 10px;
+}
+
+.transactionRow:hover { background-color: #f9fafb; }
+
+.iconBox {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: #2563eb;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+
+.transDesc { font-weight: 600; color: #333; display: block; }
+.transRef { font-size: 0.8rem; color: #888; }
+.transDate { font-size: 0.9rem; color: #666; }
+
+.transAmount { font-weight: bold; text-align: right; }
+.positive { color: #16a34a; } /* Verde */
+.negative { color: #dc2626; } /* Rojo */
+
+/* Estados (Badges) */
+.statusBadge {
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+.statusSUCCESS { background: #dcfce7; color: #16a34a; }
+.statusFAILED { background: #fee2e2; color: #ef4444; }
+.statusPENDING { background: #ffedd5; color: #ea580c; }
+
+/* --- PAGINACIÓN --- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: white;
+}
+.pageBtn {
+  background: none; border: 1px solid #ddd;
+  padding: 5px 10px; border-radius: 5px; cursor: pointer;
+}
+.pageBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.loadingState {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  gap: 15px;
+}
+
+/* Animación de rotación para el icono */
+.spin {
+  animation: spin 1s linear infinite;
+  font-size: 2rem;
+  color: #2563eb;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .transactionRow {
+    grid-template-columns: 50px 1fr 1fr; /* Simplificado para móvil */
+    grid-template-rows: auto auto;
+  }
+  .transAmount { grid-column: 3; grid-row: 1; }
+  .statusBadge { grid-column: 3; grid-row: 2; justify-self: end; }
+}
