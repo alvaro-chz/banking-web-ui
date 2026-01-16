@@ -52,3 +52,12 @@
   background-color: #fca5a5;
   color: #991b1b;
 }
+
+.success {
+  background-color: #16a34a; /* Verde */
+  color: white;
+}
+
+.success:hover:not(:disabled) {
+  background-color: #15803d;
+}

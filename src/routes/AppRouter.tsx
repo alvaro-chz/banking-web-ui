@@ -9,6 +9,8 @@ import { BeneficiariesPage } from '../pages/client/beneficiaries/BeneficiariesPa
 import { TransactionsPage } from '../pages/client/transactions/TransactionsPage';
 import { NewTransactionPage } from '../pages/client/transactions/NewTransactionPage';
 import { AdminDashboardPage } from '../pages/admin/dashboard/DashboardPage';
+import { AdminUsersPage } from '../pages/admin/users/AdminUsersPage';
+import { AdminTransactionsPage } from '../pages/admin/transactions/AdminTransactionsPage';
 
 export const AppRouter = () => {
   return (
@@ -32,6 +34,8 @@ export const AppRouter = () => {
       <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
          {/* Aquí pondremos las páginas del Admin */}
          <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+         <Route path="/admin/users" element={<AdminUsersPage />} />
+         <Route path="/admin/transactions" element={<AdminTransactionsPage />} />
       </Route>
 
       {/* Redirección por defecto */}

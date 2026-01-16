@@ -26,7 +26,7 @@ export const HeaderAdmin = ({ }: HeaderProps) => {
       {/* IZQUIERDA: LOGO (Rojo o distintivo para Admin) */}
       <div className={styles.logoContainer} onClick={() => navigate('/admin/dashboard')}>
         {/* Cambiamos el color del borde a rojo para diferenciar Admin */}
-        <div className={styles.logoCircle} style={{borderColor: '#ef4444', color: '#ef4444'}}>AD</div>
+        <div className={styles.logoCircle} style={{borderColor: '#ef4444', color: '#ef4444'}}>BK</div>
         <span style={{color: '#ef4444'}}>ADMIN</span>
       </div>
 
