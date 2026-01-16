@@ -5,6 +5,7 @@ import { Button } from '../../components/Button';
 import { Footer } from '../../components/Footer';
 import { useAuth } from '../../context/AuthContext';
 import { FiAlertCircle } from 'react-icons/fi';
+import loginImage from '/src/assets/login-image.png';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -91,7 +92,8 @@ export const LoginPage = () => {
       <div className={styles.contentWrapper}>
         {/* IZQUIERDA: Imagen */}
         <div className={styles.imageSide}>
-           Imagen
+           {/* 👇 2. USA LA IMAGEN AQUÍ */}
+           <img src={loginImage} alt="Bienvenido al Banco" className={styles.heroImage} />
         </div>
 
         {/* DERECHA: Formulario */}

@@ -10,38 +10,42 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* Removed justify-content: center and align-items: center from here.
+     We let the contentWrapper handle the centering within the available space. */
   background-color: var(--bg-color);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* --- WRAPPER CENTRAL --- */
 .contentWrapper {
+  /* Key Fix: flex: 1 takes up all available vertical space */
+  flex: 1; 
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 32px; 
-  margin-bottom: 3rem;
+  align-items: center;     /* Vertically centers the login block */
+  justify-content: center; /* Horizontally centers the login block */
+  gap: 0; /* Set gap to 0 so the image and form touch, looking like one card */
   width: 100%;
   max-width: 900px; 
-  margin: auto;
+  margin: 0 auto; /* Horizontally centers the wrapper itself */
+  padding: 20px;
 }
 
 /* --- IZQUIERDA: IMAGEN --- */
 .imageSide {
-  width: 400px;
-  height: 580px; 
-  background-color: #e0e0e0;
-  border-radius: 20px;
+  flex: 1; /* Ocupa la mitad del espacio en desktop */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #888;
-  font-weight: 600;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden; /* Para recortar si la imagen es muy grande */
+  border-radius: 20px 0 0 20px; /* Redondear esquinas izquierdas (opcional) */
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* CLAVE: Hace que la imagen cubra todo sin estirarse/deformarse */
+  object-position: center; /* Centra la imagen */
 }
 
 /* --- DERECHA: FORMULARIO (Estilo Register) --- */

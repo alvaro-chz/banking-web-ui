@@ -4,18 +4,19 @@ import styles from './Button.module.css';
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   isLoading?: boolean;
-  variant?: 'primary' | 'secondary' | 'danger'; // 👈 Nueva prop
+  variant?: 'primary' | 'secondary' | 'danger' | 'success'; // Agregué 'success' para tu botón verde
+  icon?: React.ReactNode; // 👈 Nueva prop para el icono
 }
 
 export const Button = ({ 
   label, 
   isLoading, 
-  variant = 'primary', // Por defecto será azul
+  variant = 'primary', 
   className,
+  icon,
   ...props 
 }: ButtonProps) => {
   
-  // Combinamos las clases: Base + Variante + Clases extras que pases
   const combinedClassName = `${styles.button} ${styles[variant]} ${className || ''}`;
 
   return (
@@ -24,7 +25,15 @@ export const Button = ({
       disabled={isLoading || props.disabled}
       {...props}
     >
-      {isLoading ? 'Cargando...' : label}
+      {isLoading ? (
+        'Cargando...'
+      ) : (
+        /* Usamos un span flex para alinear icono y texto */
+        <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+          {icon && <span style={{ display: 'flex' }}>{icon}</span>}
+          {label}
+        </span>
+      )}
     </button>
   );
 };
