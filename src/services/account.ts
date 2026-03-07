@@ -9,7 +9,6 @@ export interface AccountResponse {
   accountNumber: string;
 }
 
-// Ahora pide el userId para completar la URL: /api/v1/accounts/user/{id}
 export const getAccountsByUserId = async (userId: number): Promise<AccountResponse[]> => {
   const response = await api.get<AccountResponse[]>(`/api/v1/accounts/user/${userId}`);
   return response.data;
